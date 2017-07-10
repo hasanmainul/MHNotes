@@ -15,11 +15,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var noteDeleteIndexPath: IndexPath?
     
     var dummyDataSource = [String]()
+    var allNotes: [Note]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        preFetchData()
-        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,20 +34,28 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func preFetchData() {
         dummyDataSource = ["Note 1",  "Note 2", "Note 3", "Note 4", "Note 5"]
+        allNotes = NotesManager.shared.getNotes()
+        allNotes = allNotes?.sorted(by: { (aNote, bNote) -> Bool in
+            return aNote.updateTimeStamp > bNote.updateTimeStamp
+        })
     }
     
     func setupUI() {
         noteListTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
-    func confirmDelete(data: String) {
+    func confirmDelete(data: Note) {
         let alert = UIAlertController(title: "Delete Note", message: "Are you sure?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [unowned self] _ in
             if let indexPath = self.noteDeleteIndexPath {
                 self.noteListTableView.beginUpdates()
                 
-                self.dummyDataSource.remove(at: indexPath.row)
+                let noteToDelete = self.allNotes?[indexPath.row]
+                
+                NotesManager.shared.deleteNote(note: noteToDelete!)
+                self.allNotes?.remove(at: indexPath.row)
+                
                 self.noteListTableView.deleteRows(at: [indexPath], with: .automatic)
                 
                 self.noteDeleteIndexPath = nil
@@ -68,6 +75,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - UITableViewDataSource and UITableViewDelegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let _ = allNotes {
+            return allNotes!.count
+        }
         return dummyDataSource.count
     }
     
@@ -76,23 +86,33 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.selectionStyle = .none
         
-        cell.textLabel?.text = dummyDataSource[indexPath.row]
+        if let _ = allNotes {
+            let note = allNotes![indexPath.row]
+            cell.textLabel?.text = note.content
+            cell.detailTextLabel?.text = note.timeStamp
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            noteDeleteIndexPath = indexPath
-            let noteToDelete = dummyDataSource[indexPath.row]
-            confirmDelete(data: noteToDelete)
-            tableView.setEditing(false, animated: true)
+            if let _ = allNotes {
+                noteDeleteIndexPath = indexPath
+                let noteToDelete = allNotes![indexPath.row]
+                confirmDelete(data: noteToDelete)
+                tableView.setEditing(false, animated: true)
+            }
         }
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        if let _ = allNotes {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailVC = storyboard.instantiateViewController(withIdentifier: "detailVC") as! DetailViewController
+            detailVC.isEditingNote = true
+            detailVC.noteToEdit = allNotes![indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }

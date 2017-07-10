@@ -79,6 +79,9 @@
                             <constraint firstItem="mfq-Hd-8g7" firstAttribute="top" secondItem="sCf-Wp-ku7" secondAttribute="bottom" id="eqM-Lg-Bu3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="noteContentTextView" destination="sCf-Wp-ku7" id="hsh-vN-dhD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHB-mh-MEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

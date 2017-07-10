@@ -14,6 +14,10 @@
 		FD0ADC391F120B76003EBC4E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC381F120B76003EBC4E /* ListViewController.swift */; };
 		FD0ADC3B1F1211C9003EBC4E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC3A1F1211C9003EBC4E /* DetailViewController.swift */; };
 		FD0ADC3D1F122DCC003EBC4E /* noteBG.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0ADC3C1F122DCC003EBC4E /* noteBG.png */; };
+		FD0ADC3F1F133E24003EBC4E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC3E1F133E24003EBC4E /* Utils.swift */; };
+		FD0ADC411F134025003EBC4E /* NotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC401F134025003EBC4E /* NotesManager.swift */; };
+		FD0ADC431F134087003EBC4E /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC421F134087003EBC4E /* Notes.swift */; };
+		FD0ADC451F134DD5003EBC4E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0ADC441F134DD5003EBC4E /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		FD0ADC381F120B76003EBC4E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		FD0ADC3A1F1211C9003EBC4E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FD0ADC3C1F122DCC003EBC4E /* noteBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noteBG.png; sourceTree = "<group>"; };
+		FD0ADC3E1F133E24003EBC4E /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		FD0ADC401F134025003EBC4E /* NotesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesManager.swift; sourceTree = "<group>"; };
+		FD0ADC421F134087003EBC4E /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		FD0ADC441F134DD5003EBC4E /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,10 @@
 				FD0ADC381F120B76003EBC4E /* ListViewController.swift */,
 				FD0ADC3A1F1211C9003EBC4E /* DetailViewController.swift */,
 				FD0ADC3C1F122DCC003EBC4E /* noteBG.png */,
+				FD0ADC3E1F133E24003EBC4E /* Utils.swift */,
+				FD0ADC401F134025003EBC4E /* NotesManager.swift */,
+				FD0ADC421F134087003EBC4E /* Notes.swift */,
+				FD0ADC441F134DD5003EBC4E /* Date.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -144,8 +156,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD0ADC3B1F1211C9003EBC4E /* DetailViewController.swift in Sources */,
+				FD0ADC411F134025003EBC4E /* NotesManager.swift in Sources */,
+				FD0ADC451F134DD5003EBC4E /* Date.swift in Sources */,
 				FD0ADC391F120B76003EBC4E /* ListViewController.swift in Sources */,
 				FD0ADC271F11F91E003EBC4E /* AppDelegate.swift in Sources */,
+				FD0ADC3F1F133E24003EBC4E /* Utils.swift in Sources */,
+				FD0ADC431F134087003EBC4E /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
