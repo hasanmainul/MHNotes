@@ -1,7 +1,4 @@
 //
-//  AppDelegate.swift
-//  Notes
-//
 //  Created by mainul on 7/9/17.
 //  Copyright © 2017 mainul. All rights reserved.
 //
@@ -17,4 +14,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
